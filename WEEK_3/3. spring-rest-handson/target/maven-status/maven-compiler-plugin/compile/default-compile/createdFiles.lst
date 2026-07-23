@@ -1,0 +1,10 @@
+com\cognizant\springrest\controller\DepartmentController.class
+com\cognizant\springrest\dao\EmployeeDao.class
+com\cognizant\springrest\model\Department.class
+com\cognizant\springrest\service\EmployeeService.class
+com\cognizant\springrest\model\Skill.class
+com\cognizant\springrest\SpringRestApplication.class
+com\cognizant\springrest\service\DepartmentService.class
+com\cognizant\springrest\model\Employee.class
+com\cognizant\springrest\controller\EmployeeController.class
+com\cognizant\springrest\dao\DepartmentDao.class

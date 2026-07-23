@@ -1,4 +1,4 @@
-package com.cognizant.springlearn.controller;
+package com.cognizant;
 
 import org.junit.jupiter.api.Test;
 
