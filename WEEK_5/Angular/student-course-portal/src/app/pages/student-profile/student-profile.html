@@ -1,0 +1,17 @@
+<div class="profile-container">
+  <h2>Student Profile</h2>
+
+  <div class="profile-info">
+    <h3>Enrolled Courses</h3>
+    <div *ngIf="enrollmentService.getEnrolledCourses().length === 0">
+      <p>You are not enrolled in any courses yet.</p>
+    </div>
+    <div *ngFor="let course of enrollmentService.getEnrolledCourses()" class="enrolled-course">
+      <h4>{{ course.name }}</h4>
+      <p>Code: {{ course.code }} | Credits: {{ course.credits }}</p>
+      <span class="grade-badge" [ngSwitch]="course.gradeStatus">
+        <span *ngSwitchCase="'passed'" class="badge badge-passed">Passed</span>
+        <span *ngSwitchCase="'failed'" class="badge badge-failed">Failed</span>
+        <span *ngSwitchCase="'pending'" class="badge badge-pending">Pending</span>
+    </div>
+</div>

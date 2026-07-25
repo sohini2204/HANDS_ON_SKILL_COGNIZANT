@@ -1,0 +1,23 @@
+File Explanations for Student Course Portal:
+
+1. angular.json - Main configuration file for the Angular CLI workspace; defines project settings, build configurations, budgets, and file replacements for different environments.
+
+2. tsconfig.json - Root TypeScript configuration file that sets compiler options, path mappings, and references to other TypeScript config files (tsconfig.app.json, tsconfig.spec.json).
+
+3. tsconfig.app.json - TypeScript configuration specific to the application code; extends tsconfig.json with app-specific compiler options like rootDir and types.
+
+4. package.json - NPM package manifest that lists project dependencies, devDependencies, scripts (ng serve, ng build, ng test), and metadata about the project.
+
+5. src/main.ts - Application entry point that bootstraps the root component (App) using bootstrapApplication with the appConfig providers; Angular starts rendering from here.
+
+6. src/app/app.config.ts - Application configuration file (standalone API) that provides router, HTTP client with interceptors, and other global providers to the application.
+
+7. src/app/app.ts - Root component definition with @Component decorator, selector 'app-root', template/stylesheet references, and the component class with injected services.
+
+8. src/index.html - The main HTML host page that includes the <app-root> element where Angular mounts the application, along with meta tags and base href configuration.
+
+Budgets Configuration (angular.json -> architect.build.configurations.production.budgets):
+- maximumWarning: "500kB" - Shows a warning in the console when the initial bundle size exceeds 500kB
+- maximumError: "1MB" - Shows an error (and fails the build) when the initial bundle size exceeds 1MB
+- These budgets help keep the application bundle size manageable for performance
+

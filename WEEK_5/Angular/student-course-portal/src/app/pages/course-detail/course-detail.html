@@ -1,0 +1,29 @@
+@let detailTitle = 'Course Details';
+
+<div class="detail-container">
+  <h2>{{ detailTitle }}</h2>
+
+  @if (loading) {
+    <p class="loading">Loading course details...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else if (course) {
+    <div class="detail-card">
+      <h3>{{ course.name }}</h3>
+      <p><strong>Course Code:</strong> {{ course.code }}</p>
+      <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+      <p><strong>Status:</strong>
+        <span [ngClass]="{
+          'badge-passed': course.gradeStatus === 'passed',
+          'badge-failed': course.gradeStatus === 'failed',
+          'badge-pending': course.gradeStatus === 'pending'
+        }">
+          {{ course.gradeStatus }}
+        </span>
+      </p>
+      <p><strong>Course ID:</strong> {{ course.id }}</p>
+    </div>
+    <a routerLink="/courses" class="back-link">&larr; Back to Courses</a>
+  }
+</div>
+

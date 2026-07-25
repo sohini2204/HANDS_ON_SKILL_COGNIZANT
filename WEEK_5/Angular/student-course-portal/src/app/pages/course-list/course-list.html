@@ -1,0 +1,32 @@
+<div class="course-list-container">
+  <h2>Course List</h2>
+
+  <!-- Search input with query params update -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search courses..." (input)="onSearch()" />
+  </div>
+
+  <!-- *ngIf for loading state with 1.5s timeout -->
+  <p *ngIf="isLoading" class="loading-text">Loading courses...</p>
+
+  <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+
+  <!-- *ngIf with else template for empty courses -->
+  <ng-template #noCourses>
+    <p class="no-courses">No courses available.</p>
+  </ng-template>
+
+  <div *ngIf="!isLoading && !errorMessage && courses.length > 0; else noCourses">
+    <!-- Course grid with *ngFor and trackBy -->
+    <div class="course-grid">
+      <app-course-card
+        *ngFor="let course of courses; trackBy: trackByCourseId; let i = index"
+        [course]="course"
+        (enrollRequested)="onEnroll($event)"
+        (click)="navigateToCourse(course.id)"
+      ></app-course-card>
+    </div>
+
+    <!-- Display selected course ID on enrollment -->
+    <p *ngIf="selectedCourseId" class="selected-info">Selected course ID: {{ selectedCourseId }}</p>
+  </div>

@@ -1,0 +1,51 @@
+.detail-container {
+  padding: 20px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+}
+
+.error {
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 8px;
+}
+
+.detail-card {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detail-card p {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.badge-passed { color: #2e7d32; font-weight: 600; }
+.badge-failed { color: #c62828; font-weight: 600; }
+.badge-pending { color: #616161; font-weight: 600; }
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+

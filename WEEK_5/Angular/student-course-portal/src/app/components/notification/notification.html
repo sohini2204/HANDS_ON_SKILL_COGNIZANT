@@ -1,0 +1,13 @@
+<div class="notification-container">
+  <h3>Notifications</h3>
+  <button (click)="addTestMessage()">Add Test Notification</button>
+
+  <div class="messages" *ngIf="(notificationService.messages$ | async)?.length">
+    <div class="message" *ngFor="let msg of notificationService.messages$ | async">
+      {{ msg }}
+    </div>
+    <button class="clear-btn" (click)="notificationService.clearMessages()">Clear All</button>
+  </div>
+
+  <p *ngIf="!(notificationService.messages$ | async)?.length">No notifications yet.</p>
+</div>

@@ -1,0 +1,11 @@
+<app-header></app-header>
+@if (loadingService.isLoading$ | async) {
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+    <span>Loading...</span>
+  </div>
+}
+<div class="container">
+  <router-outlet />
+</div>
+

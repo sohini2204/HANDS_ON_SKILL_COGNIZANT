@@ -1,0 +1,115 @@
+.course-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 180px;
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* card--enrolled class via [ngClass] */
+.card--enrolled {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+/* card--full class via [ngClass] when credits >= 4 */
+.card--full {
+  background-color: #fff3e0;
+  border-color: #ff9800;
+}
+
+/* expanded class for toggling card height */
+.expanded {
+  min-height: 260px;
+}
+
+.course-card h3 {
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.course-code {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.course-credits {
+  color: #555;
+  font-weight: 500;
+}
+
+/* Grade badges via *ngSwitch */
+.grade-badge {
+  margin: 10px 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.badge-passed {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.badge-failed {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.badge-pending {
+  background-color: #e0e0e0;
+  color: #616161;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-show-details,
+.btn-enroll-card {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.2s;
+}
+
+.btn-show-details {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.btn-enroll-card {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-enroll-card:hover {
+  background: #388e3c;
+}
+
+.card-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.card-details p {
+  margin: 4px 0;
+  color: #555;
+}

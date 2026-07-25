@@ -1,0 +1,121 @@
+<div class="reactive-enroll-container">
+  <h2>Reactive Enrollment Form</h2>
+
+  @if (submitted) {
+    <div class="success-message">
+      Enrollment request submitted successfully!
+    </div>
+  }
+
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()" class="reactive-form">
+    <!-- Student Name -->
+    <div class="form-group">
+      <label for="studentName">Student Name</label>
+      <input
+        id="studentName"
+        type="text"
+        formControlName="studentName"
+        placeholder="Enter your name"
+      />
+      @if (enrollForm.get('studentName')?.touched && enrollForm.get('studentName')?.errors) {
+        @if (enrollForm.get('studentName')?.errors?.['required']) {
+          <span class="error">Name is required</span>
+        }
+        @if (enrollForm.get('studentName')?.errors?.['minlength']) {
+          <span class="error">Name must be at least 3 characters</span>
+        }
+      }
+    </div>
+
+    <!-- Student Email -->
+    <div class="form-group">
+      <label for="studentEmail">Student Email</label>
+      <input
+        id="studentEmail"
+        type="email"
+        formControlName="studentEmail"
+        placeholder="Enter your email"
+      />
+      @if (enrollForm.get('studentEmail')?.pending) {
+        <span class="info">Checking email availability...</span>
+      }
+      @if (enrollForm.get('studentEmail')?.touched && enrollForm.get('studentEmail')?.errors) {
+        @if (enrollForm.get('studentEmail')?.errors?.['required']) {
+          <span class="error">Email is required</span>
+        }
+        @if (enrollForm.get('studentEmail')?.errors?.['email']) {
+          <span class="error">Please enter a valid email</span>
+        }
+        @if (enrollForm.get('studentEmail')?.errors?.['emailTaken']) {
+          <span class="error">This email is already taken</span>
+        }
+      }
+    </div>
+
+    <!-- Course ID -->
+    <div class="form-group">
+      <label for="courseId">Course ID</label>
+      <input
+        id="courseId"
+        type="text"
+        formControlName="courseId"
+        placeholder="Enter course ID (e.g., CS101)"
+      />
+      @if (enrollForm.get('courseId')?.touched && enrollForm.get('courseId')?.errors) {
+        @if (enrollForm.get('courseId')?.errors?.['required']) {
+          <span class="error">Course ID is required</span>
+        }
+        @if (enrollForm.get('courseId')?.errors?.['noCourseCode']) {
+          <span class="error">Course code starting with XX is not allowed.</span>
+        }
+      }
+    </div>
+
+    <!-- Preferred Semester -->
+    <div class="form-group">
+      <label for="preferredSemester">Preferred Semester</label>
+      <select id="preferredSemester" formControlName="preferredSemester">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+
+    <!-- Agree to Terms -->
+    <div class="form-group checkbox-group">
+      <label>
+        <input type="checkbox" formControlName="agreeToTerms" />
+        I agree to the terms and conditions
+      </label>
+      @if (enrollForm.get('agreeToTerms')?.touched && enrollForm.get('agreeToTerms')?.errors?.['requiredTrue']) {
+        <span class="error">You must agree to the terms</span>
+      }
+    </div>
+
+    <!-- Additional Courses (FormArray) -->
+    <div class="form-group">
+      <label>Additional Courses</label>
+      <button type="button" class="btn-add" (click)="addCourse()">Add Another Course</button>
+
+      @if (additionalCourses && additionalCourses.length > 0) {
+        <div class="additional-courses">
+          @for (ctrl of additionalCourses.controls; track $index; let i = $index) {
+            <div class="additional-course-row">
+              <input [formControl]="$any(ctrl)" placeholder="Enter course ID" />
+              <button type="button" class="btn-remove" (click)="removeCourse(i)">Remove</button>
+              @if (ctrl.touched && ctrl.errors?.['required']) {
+                <span class="error">Course ID is required</span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="enrollForm.invalid">Submit</button>
+      <button type="button" class="btn-reset" (click)="enrollForm.reset()">Reset</button>
+    </div>
+  </form>
+</div>
+

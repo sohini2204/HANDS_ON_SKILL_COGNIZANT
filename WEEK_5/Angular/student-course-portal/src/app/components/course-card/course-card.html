@@ -1,0 +1,17 @@
+<div class="course-card" [ngClass]="cardClasses" [ngStyle]="cardStyle" appHighlight>
+  <h3>{{ course.name }}</h3>
+  <p class="course-code">{{ course.code }}</p>
+  <p class="course-credits">{{ course.credits | creditLabel }}</p>
+
+  <div class="grade-badge" [ngSwitch]="course.gradeStatus">
+    <span *ngSwitchCase="'passed'" class="badge badge-passed">Passed</span>
+    <span *ngSwitchCase="'failed'" class="badge badge-failed">Failed</span>
+    <span *ngSwitchCase="'pending'" class="badge badge-pending">Pending</span>
+  </div>
+
+  <button class="btn-details" (click)="toggleDetails()">Show Details</button>
+
+  <button class="btn-enroll" (click)="toggleEnroll()">
+    {{ isEnrolled ? 'Unenroll' : 'Enroll' }}
+  </button>
+</div>
